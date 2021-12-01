@@ -1,0 +1,17 @@
+#!/bin/csh
+
+# Script to run IDL SID2 QC and display GUI.
+
+setenv IDL_STARTUP /tmp/sid2_idl_startup
+
+cat > $IDL_STARTUP << EOF
+device, retain=2, decom=0
+loadct,39
+!path=!path+':/opt/local/idl/lib'
+EOF
+
+chmod a+rw $IDL_STARTUP
+
+idl -e sid
+
+rm $IDL_STARTUP
